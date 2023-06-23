@@ -77,7 +77,7 @@ class Task(models.Model):
     )
 
     class Meta:
-        ordering = ["task_name"]
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
