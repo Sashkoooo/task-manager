@@ -7,6 +7,7 @@ from tasks.models import Task
 
 class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
+    template_name = "tasks/task/task_list.html"
     paginate_by = 5
 
 

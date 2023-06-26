@@ -7,11 +7,13 @@ from tasks.models import Team
 
 class TeamListView(LoginRequiredMixin, generic.ListView):
     model = Team
+    template_name = "tasks/team/team_list.html"
     paginate_by = 5
 
 
 class TeamDetailView(LoginRequiredMixin, generic.DetailView):
     model = Team
+    template_name = "tasks/team/team_detail.html"
 
 
 class TeamCreateView(LoginRequiredMixin, generic.CreateView):

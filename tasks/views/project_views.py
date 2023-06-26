@@ -7,6 +7,7 @@ from tasks.models import Project
 
 class ProjectListView(LoginRequiredMixin, generic.ListView):
     model = Project
+    template_name = "tasks/project/project_list.html"
     paginate_by = 5
 
 

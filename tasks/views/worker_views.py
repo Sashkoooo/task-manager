@@ -7,7 +7,8 @@ from tasks.models import Worker
 
 class WorkerListView(LoginRequiredMixin, generic.ListView):
     model = Worker
-    paginate_by = 5
+    template_name = "tasks/worker/worker_list.html"
+    paginate_by = 10
 
 
 class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
