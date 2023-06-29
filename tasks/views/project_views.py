@@ -13,6 +13,7 @@ class ProjectListView(LoginRequiredMixin, generic.ListView):
 
 class ProjectDetailView(LoginRequiredMixin, generic.DetailView):
     model = Project
+    template_name = "tasks/project/project_detail.html"
 
 
 class ProjectCreateView(LoginRequiredMixin, generic.CreateView):
