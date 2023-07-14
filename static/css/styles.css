@@ -1,0 +1,75 @@
+body {
+    background-image: url('/static/img/img1.jpg');
+    font-family: Arial, Helvetica, sans-serif;
+    color: #00363a;
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+.container-fluid {
+    height: 100%;
+    width: 100%;
+}
+
+.style-link {
+    color: black;
+    text-decoration: none;
+    font-size: large;
+}
+
+.style-link:hover {
+    text-decoration: none;
+    color: blue;
+}
+
+.assignees-container {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-card-group {
+    height: 200px;
+}
+
+.footer {
+    height: 100px;
+    background-color: #333333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.sidenav {
+    height: 700px;
+}
+
+.sidenav a {
+    color: white;
+    font-size: x-large;
+    text-decoration: none;
+    display: block;
+}
+
+.sidenav a:hover {
+    background-color: #6f94c6;
+    color: black;
+}
+
+.custom-card-group {
+    height: 300px;
+}
+
+.index-block {
+    height: 350px;
+    color: white;
+    font-size: 50px;
+}
+
+.index-data {
+    color: white;
+}
