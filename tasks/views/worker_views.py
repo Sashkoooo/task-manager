@@ -11,6 +11,10 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
     template_name = "tasks/worker/worker_list.html"
     paginate_by = 10
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.exclude(is_superuser=True)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         now = timezone.now()
@@ -26,29 +30,15 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
             )
         return context
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.exclude(is_superuser=True)
-
 
 class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "tasks/worker/worker_detail.html"
     model = Worker
+    success_url = reverse_lazy("tasks:worker-detail")
 
-
-class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
-    model = Worker
-    fields = "__all__"
-    success_url = reverse_lazy("tasks:worker-list")
-
-
-class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Worker
-    fields = "__all__"
-    success_url = reverse_lazy("tasks:worker-list")
-
-
-class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = Worker
-    fields = "__all__"
-    success_url = reverse_lazy("tasks:worker-list")
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        worker = self.object
+        worker.completed_tasks_list = worker.tasks.filter(completed=True)
+        worker.tasks_in_progress_list = worker.tasks.filter(completed=False)
+        return context
