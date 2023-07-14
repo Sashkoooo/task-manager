@@ -6,7 +6,10 @@ from tasks.models import Task, Worker
 
 class TaskForm(forms.ModelForm):
     deadline = forms.DateTimeField(
-        widget=forms.DateTimeInput(attrs={"type": "datetime-local", "class": "form-control"}),
+        widget=forms.DateTimeInput(attrs={
+            "type": "datetime-local",
+            "class": "form-control"}
+        ),
         input_formats=["%Y-%m-%dT%H:%M"]
     )
     assignees = forms.ModelMultipleChoiceField(
