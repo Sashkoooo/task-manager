@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <h3 class="index-data">
+    {{ worker.first_name }}
+    {{ worker.last_name }},
+    {{ worker.position }}
+  </h3>
+  <div class="row">
+    {% with task_list_variable=worker.tasks_in_progress_list %}
+      <div class="col p-2">
+        <div class="container-fluid">
+          <div class="card border-light w-100 shadow">
+            <h3 class="card-header">Tasks in progress</h3>
+            <div class="card-body">
+              {% include "tasks/task/task_table.html" %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endwith %}
+    {% with task_list_variable=worker.completed_tasks_list %}
+      <div class="col p-2">
+        <div class="container-fluid">
+          <div class="card border-light w-100 shadow">
+            <h3 class="card-header">Completed tasks</h3>
+            <div class="card-body">
+              {% include "tasks/task/task_table.html" %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endwith %}
+  </div>
+  {#  {% block pagination %}#}
+  {#    {% include "includes/pagination.html"%}#}
+  {#  {% endblock %}#}
+{% endblock %}

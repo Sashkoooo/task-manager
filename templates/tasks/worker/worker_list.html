@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <div class="container-fluid">
+    <div class="card border-light w-100 shadow">
+      <h3 class="card-header">Workers list</h3>
+      <div class="card-body">
+        {% if worker_list %}
+          <table class="table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Position</th>
+              <th>Completed tasks</th>
+              <th>Tasks in progress</th>
+              <th>Overdue</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            {% for worker in worker_list %}
+              <tr>
+                <td>
+                  <a href="{% url "tasks:worker-detail" pk=worker.id %} "
+                     class="style-link focus-ring py-1 px-2 rounded-2">{{ worker.id }}
+                  </a>
+                </td>
+                <td>{{ worker.first_name }}</td>
+                <td>{{ worker.last_name }}</td>
+                <td>{{ worker.position }}</td>
+                <td>{{ worker.completed_tasks_count }}</td>
+                <td>{{ worker.tasks_in_progress_count }}</td>
+                <td>{{ worker.overdue_tasks_count }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>There are no workers</p>
+        {% endif %}
+      </div>
+      {% include "includes/pagination.html" %}
+    </div>
+  </div>
+{% endblock %}

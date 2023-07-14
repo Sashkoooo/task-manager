@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <div class="container-fluid">
+    <div class="card border-light w-100">
+      <h3 class="card-header">Tasks</h3>
+      <div class="card-body">
+        {% with task_list_variable=task_list %}
+          {% if task_list %}
+            {% include "tasks/task/task_table.html" %}
+          {% else %}
+            <h5>There are no tasks</h5>
+          {% endif %}
+        {% endwith %}
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a style="float: right" href="{% url "tasks:task-create" %}"
+             class="btn btn-outline-primary">Create new task</a>
+        </div>
+      </div>
+      {% include "includes/pagination.html" %}
+    </div>
+  </div>
+{% endblock %}

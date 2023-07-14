@@ -1,0 +1,21 @@
+<div class="container-fluid pt-5 bg-success">
+  <div class="sidenav">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="style-link focus-ring py-1 px-2 rounded-2" href="{% url "tasks:index" %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="style-link focus-ring py-1 px-2 rounded-2" href="{% url "tasks:task-list" %}">All tasks</a>
+      </li>
+      <li class="nav-item">
+        <a class="style-link focus-ring py-1 px-2 rounded-2"
+           href="{% url "tasks:worker-detail" pk=user.id %}">My tasks
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="style-link focus-ring py-1 px-2 rounded-2" href="{% url "tasks:worker-list" %}">Workers</a>
+      </li>
+    </ul>
+    <hr class="d-sm-none">
+  </div>
+</div>

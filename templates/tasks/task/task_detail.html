@@ -1,10 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card border-light w-100 shadow h-100">
+          <h4 class="card-header">Task: {{ task.id }} {{ task.name }}
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a href="{% url "tasks:task-update" pk=task.id %}"
+                 class="btn btn-outline-primary">Update task</a>
+              <a href="{% url "tasks:task-delete" pk=task.id %}"
+                 class="btn btn-outline-danger d-grid gap-2 d-md-flex justify-content-md-end">
+                Delete task
+              </a>
+            </div>
+          </h4>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><h5>Task description:</h5>
+                <p class="card-text"> {{ task.description }}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <ul>
+              <li class="list-group-item">Created at: {{ task.created_at }}</li>
+              <li class="list-group-item">Updated at: {{ task.updated_at }}</li>
+              <li class="list-group-item">Created by: {{ task.created_by }}</li>
+              <li class="list-group-item">Updated by: {{ task.updated_by }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card border-light w-100 shadow">
+          <h4 class="card-header">Task information</h4>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Deadline: {{ task.deadline }}</li>
+              {% if task.completed %}
+                <li class="list-group-item text-success">Completed: {{ task.completed|yesno:"Yes,No" }}</li>
+              {% else %}
+                <li class="list-group-item text-danger">Completed: {{ task.completed|yesno:"Yes,No" }}</li>
+              {% endif %}
+              <li class="list-group-item">Priority: {{ task.priority }}</li>
+              <li class="list-group-item">Task type: {{ task.type.name }}</li>
+            </ul>
+          </div>
+        </div>
+        <br>
+        <div class="card border-light w-100 shadow">
+          <h4 class="card-header">Assignees:</h4>
+          <div class="card-body">
+            <ul>
+              {% for worker in task.assignees.all %}
+                <li class="list-group-item">
+                  <a href="{% url "tasks:worker-detail" pk=worker.id %}"
+                     class="style-link focus-ring py-1 px-2 rounded-2">
+                    {{ worker.first_name }}
+                    {{ worker.last_name }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br><br>
+    </div>
+  </div>
+{% endblock %}

@@ -1,15 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>IT Company Task Manager Home</h1>
-  <p>Welcome to IT Company Task Manager!</p>
-  <h2>Dynamic content</h2>
-  <p>Task Manager has the following record counts:</p>
-  <ul>
-    <li><strong>Projects:</strong> {{ num_projects }}</li>
-    <li><strong>Teams:</strong> {{ num_teams }}</li>
-    <li><strong>Workers:</strong> {{ num_workers }}</li>
-    <li><strong>Tasks:</strong> {{ num_tasks }}</li>
-  </ul>
-
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="index-block">
+        <div class="text-center">
+          <h1>Task Manager</h1><br>
+          <h4>This task manager allows</h4>
+          <h4>every authorized user create task,</h4>
+          <h4>assign this task to team-members,</h4>
+          <h4>and mark the task as done</h4>
+        </div>
+      </div>
+    </div>
+    <div class="row p-5 bg-light border rounded shadow">
+      <h2>Summary indicators:</h2><br><br>
+      <div class="col">
+        <h1>{{ num_tasks }}</h1>
+        <h5>Current tasks</h5>
+      </div>
+      <div class="col">
+        <h1>{{ completed_tasks }}</h1>
+        <h5>Completed tasks</h5>
+      </div>
+      <div class="col">
+        <h1>{{ in_progress_tasks }}</h1>
+        <h5>Tasks in progress</h5>
+      </div>
+      <div class="col text-danger">
+        <h1>{{ overdue_tasks }}</h1>
+        <h5>Overdue tasks</h5>
+      </div>
+    </div>
+  </div>
 {% endblock %}

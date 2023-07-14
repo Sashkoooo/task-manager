@@ -1,0 +1,46 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Task</th>
+    <th>Priority</th>
+    <th>Deadline</th>
+    <th>Completed</th>
+    <th>Created by</th>
+  </tr>
+  </thead>
+  <tbody class="table-group-divider">
+  {% for task in task_list_variable %}
+    <tr>
+      <td>{{ task.id }}</td>
+      <td>
+        <a href="{% url "tasks:task-detail" pk=task.id %}"
+           class="style-link focus-ring py-1 px-2 rounded-2">{{ task.name }}
+        </a>
+      </td>
+      <td>
+        {% if task.priority == "Urgent" %}
+          <span class="badge bg-danger">{{ task.priority }}</span>
+        {% elif task.priority == "High" %}
+          <span class="badge bg-warning">{{ task.priority }}</span>
+        {% elif task.priority == "Middle" %}
+          <span class="badge bg-primary">{{ task.priority }}</span>
+        {% elif task.priority == "Low" %}
+          <span class="badge bg-success">{{ task.priority }}</span>
+        {% endif %}
+      </td>
+      <td>{{ task.deadline }}</td>
+      <td>
+        {% if task.completed %}
+          <strong><span class="text-success">{{ task.completed|yesno:"Yes,No" }}</span></strong>
+        {% else %}
+          <strong><span class="text-danger">{{ task.completed|yesno:"Yes,No" }}</span></strong>
+        {% endif %}
+      </td>
+      <td>
+        {{ task.created_by.first_name }}
+        {{ task.created_by.last_name }}
+      </td>
+    </tr>
+  {% endfor %}
+</table>

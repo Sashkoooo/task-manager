@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
 
-</body>
-</html>
+{% block content %}
+  <div class="container-fluid">
+    <div class="card bg-light  shadow">
+      <h3 class="card-header"> {{ object|yesno:"Update,Create" }} task </h3>
+      <div class="card-body ">
+        <form action="" method="post" novalidate>
+          {% csrf_token %}
+          <div class="row">
+            <div class="col">
+              {{ form.name|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{ form.description|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+              {{ form.deadline|as_crispy_field }}
+              {{ form.priority|as_crispy_field }}
+              {{ form.type|as_crispy_field }}
+              {% if object %}  <!-- Check if object is passed for editing -->
+                {{ form.completed|as_crispy_field }}
+              {% endif %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div style="max-height: 200px; overflow-y: auto;">
+                {{ form.assignees|as_crispy_field }}
+              </div>
+            </div>
+          </div>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <input type="submit" value="Save" class="btn btn-outline-primary">
+            <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-outline-danger">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
