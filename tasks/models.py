@@ -24,6 +24,7 @@ class Worker(AbstractUser):
     class Meta:
         verbose_name = "worker"
         verbose_name_plural = "workers"
+        ordering = ["pk"]
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}, position: {self.position}"
@@ -79,7 +80,7 @@ class Task(models.Model):
     )
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["pk"]
 
     def __str__(self):
         return self.name
