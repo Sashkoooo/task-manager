@@ -5,9 +5,7 @@ from tasks.models import (
     Worker,
     Position,
     TaskType,
-    Task,
-    Team,
-    Project
+    Task
 )
 
 
@@ -28,14 +26,4 @@ class TaskTypeAdmin(admin.ModelAdmin):
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Team)
-class TeamAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
     pass
