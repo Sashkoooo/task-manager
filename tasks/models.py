@@ -84,29 +84,3 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Team(models.Model):
-    name = models.CharField(max_length=255)
-    teammates = models.ManyToManyField(to=Worker, related_name="teams")
-
-    class Meta:
-        ordering = ["name"]
-
-    def __str__(self):
-        return self.name
-
-
-class Project(models.Model):
-    name = models.CharField(max_length=255)
-    team = models.ForeignKey(
-        to=Team,
-        on_delete=models.CASCADE,
-        related_name="projects"
-    )
-
-    class Meta:
-        ordering = ["name"]
-
-    def __str__(self):
-        return self.name
