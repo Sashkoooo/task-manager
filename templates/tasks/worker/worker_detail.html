@@ -11,9 +11,14 @@
       <div class="col p-2">
         <div class="container-fluid">
           <div class="card border-light w-100 shadow">
-            <h3 class="card-header">Tasks in progress</h3>
+            <h4 class="card-header">Tasks in progress</h4>
             <div class="card-body">
-              {% include "tasks/task/task_table.html" %}
+              {% if task_list_variable %}
+                {% include "tasks/task/task_table.html" %}
+                {% include "includes/pagination.html" %}
+              {% else %}
+                <h5>User have no tasks in progress</h5>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -23,16 +28,18 @@
       <div class="col p-2">
         <div class="container-fluid">
           <div class="card border-light w-100 shadow">
-            <h3 class="card-header">Completed tasks</h3>
+            <h4 class="card-header">Completed tasks</h4>
             <div class="card-body">
-              {% include "tasks/task/task_table.html" %}
+              {% if task_list_variable %}
+                {% include "tasks/task/task_table.html" %}
+                {% include "includes/pagination.html" %}
+              {% else %}
+                <h5>User have no completed tasks</h5>
+              {% endif %}
             </div>
           </div>
         </div>
       </div>
     {% endwith %}
   </div>
-  {#  {% block pagination %}#}
-  {#    {% include "includes/pagination.html"%}#}
-  {#  {% endblock %}#}
 {% endblock %}
