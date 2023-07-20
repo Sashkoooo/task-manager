@@ -31,3 +31,14 @@ class TaskForm(forms.ModelForm):
             instance.save()
             self.save_m2m()
         return instance
+
+
+class TaskSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        widget=forms.TextInput(attrs={
+            "class": "form-control me-2",
+            "placeholder": "Search by task name.."}
+        ),
+        label='',
+    )

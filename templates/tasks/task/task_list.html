@@ -1,9 +1,15 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <div class="container-fluid">
-    <div class="card border-light w-100">
-      <h3 class="card-header">Tasks</h3>
+    <div class="card border-light">
+      <h3 class="card-header d-flex">Tasks
+        <form action="" method="get" class="d-flex ms-auto">
+          {{ search_form }}
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+      </h3>
       <div class="card-body">
         {% with task_list_variable=task_list %}
           {% if task_list %}
