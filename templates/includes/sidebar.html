@@ -8,9 +8,13 @@
         <a class="style-link focus-ring py-1 px-2 rounded-2" href="{% url "tasks:task-list" %}">All tasks</a>
       </li>
       <li class="nav-item">
-        <a class="style-link focus-ring py-1 px-2 rounded-2"
-           href="{% url "tasks:worker-detail" pk=user.id %}">My tasks
-        </a>
+        {% if user.is_authenticated %}
+          <a class="style-link focus-ring py-1 px-2 rounded-2"
+             href="{% url "tasks:worker-detail" pk=user.id %}">My tasks</a>
+        {% else %}
+          <a class="style-link focus-ring py-1 px-2 rounded-2"
+             href="{% url "tasks:index" %}">My tasks</a>
+        {% endif %}
       </li>
       <li class="nav-item">
         <a class="style-link focus-ring py-1 px-2 rounded-2" href="{% url "tasks:worker-list" %}">Workers</a>
