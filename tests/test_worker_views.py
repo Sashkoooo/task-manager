@@ -52,11 +52,11 @@ class WorkerListViewTest(TestCase):
         context = self.response.context
 
         for worker in context["worker_list"]:
-            completed_tasks_count = worker.tasks.filter(completed=True).count()
-            tasks_in_progress_count = worker.tasks.filter(completed=False).count()
+            completed_tasks_count = worker.tasks.filter(is_completed=True).count()
+            tasks_in_progress_count = worker.tasks.filter(is_completed=False).count()
             now = timezone.now()
             overdue_tasks_count = (
-                worker.tasks.filter(completed=False, deadline__lt=now).count()
+                worker.tasks.filter(is_completed=False, deadline__lt=now).count()
             )
 
             self.assertEqual(worker.completed_tasks_count, completed_tasks_count)
@@ -83,8 +83,8 @@ class WorkerDetailViewTest(TestCase):
 
         # Check the tasks in the context based on their statuses
         worker = context["object"]
-        completed_tasks_list = worker.tasks.filter(completed=True)
-        tasks_in_progress_list = worker.tasks.filter(completed=False)
+        completed_tasks_list = worker.tasks.filter(is_completed=True)
+        tasks_in_progress_list = worker.tasks.filter(is_completed=False)
 
         self.assertEqual(
             list(worker.completed_tasks_list), list(completed_tasks_list)

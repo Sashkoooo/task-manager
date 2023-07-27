@@ -31,10 +31,10 @@
       </td>
       <td>{{ task.deadline }}</td>
       <td>
-        {% if task.completed %}
-          <strong><span class="text-success">{{ task.completed|yesno:"Yes,No" }}</span></strong>
+        {% if task.is_completed %}
+          <strong><span class="text-success">{{ task.is_completed|yesno:"Yes,No" }}</span></strong>
         {% else %}
-          <strong><span class="text-danger">{{ task.completed|yesno:"Yes,No" }}</span></strong>
+          <strong><span class="text-danger">{{ task.is_completed|yesno:"Yes,No" }}</span></strong>
         {% endif %}
       </td>
       <td>

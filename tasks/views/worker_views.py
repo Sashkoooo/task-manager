@@ -19,13 +19,13 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
         now = timezone.now()
         for worker in context["object_list"]:
             worker.completed_tasks_count = (
-                worker.tasks.filter(completed=True).count()
+                worker.tasks.filter(is_completed=True).count()
             )
             worker.tasks_in_progress_count = (
-                worker.tasks.filter(completed=False).count()
+                worker.tasks.filter(is_completed=False).count()
             )
             worker.overdue_tasks_count = (
-                worker.tasks.filter(completed=False, deadline__lt=now).count()
+                worker.tasks.filter(is_completed=False, deadline__lt=now).count()
             )
         return context
 
@@ -37,6 +37,6 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         worker = self.object
-        worker.completed_tasks_list = worker.tasks.filter(completed=True)
-        worker.tasks_in_progress_list = worker.tasks.filter(completed=False)
+        worker.completed_tasks_list = worker.tasks.filter(is_completed=True)
+        worker.tasks_in_progress_list = worker.tasks.filter(is_completed=False)
         return context

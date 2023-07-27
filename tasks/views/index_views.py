@@ -10,10 +10,10 @@ def index(request):
     """View function for the home page of the site."""
     tasks = Task.objects.all()
     num_tasks = tasks.count()
-    completed_tasks = tasks.filter(completed=True).count()
-    in_progress_tasks = tasks.filter(completed=False).count()
+    completed_tasks = tasks.filter(is_completed=True).count()
+    in_progress_tasks = tasks.filter(is_completed=False).count()
     overdue_tasks = (
-        tasks.filter(completed=False, deadline__lt=now().isoformat()).count()
+        tasks.filter(is_completed=False, deadline__lt=now().isoformat()).count()
     )
 
     context = {

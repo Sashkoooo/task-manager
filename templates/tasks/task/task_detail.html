@@ -38,10 +38,10 @@
           <div class="card-body">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Deadline: {{ task.deadline }}</li>
-              {% if task.completed %}
-                <li class="list-group-item text-success">Completed: {{ task.completed|yesno:"Yes,No" }}</li>
+              {% if task.is_completed %}
+                <li class="list-group-item text-success">Completed: {{ task.is_completed|yesno:"Yes,No" }}</li>
               {% else %}
-                <li class="list-group-item text-danger">Completed: {{ task.completed|yesno:"Yes,No" }}</li>
+                <li class="list-group-item text-danger">Completed: {{ task.is_completed|yesno:"Yes,No" }}</li>
               {% endif %}
               <li class="list-group-item">Priority: {{ task.priority }}</li>
               <li class="list-group-item">Task type: {{ task.type.name }}</li>
