@@ -2,6 +2,15 @@
 
 Django project that implement task manager.
 
+## Check it out!
+
+[Task manager project deploy to Render](https://task-manager-hepl.onrender.com/)
+
+To Log in the site, input:
+
+* login: user
+* password: user12345
+
 ## Quick Start
 
 To get this project up and running locally on your computer:
