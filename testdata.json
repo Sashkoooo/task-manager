@@ -186,7 +186,7 @@
       "name": "Task 1",
       "description": "Description for Task 1",
       "deadline": "2023-07-15T00:00:00Z",
-      "completed": false,
+      "is_completed": false,
       "priority": "Urgent",
       "type": 1,
       "assignees": [
@@ -207,7 +207,7 @@
       "name": "Task 2",
       "description": "Description for Task 2",
       "deadline": "2023-07-16T00:00:00Z",
-      "completed": false,
+      "is_completed": false,
       "priority": "High",
       "type": 2,
       "assignees": [
@@ -227,7 +227,7 @@
       "name": "Task 3",
       "description": "Description for Task 3",
       "deadline": "2023-07-17T00:00:00Z",
-      "completed": false,
+      "is_completed": false,
       "priority": "Middle",
       "type": 3,
       "assignees": [
@@ -248,7 +248,7 @@
       "name": "Task 4",
       "description": "Description for Task 4",
       "deadline": "2023-07-20T00:00:00Z",
-      "completed": false,
+      "is_completed": false,
       "priority": "Low",
       "type": 4,
       "assignees": [
@@ -268,7 +268,7 @@
       "name": "Task 5",
       "description": "Description for Task 5",
       "deadline": "2023-07-18T00:00:00Z",
-      "completed": false,
+      "is_completed": false,
       "priority": "Middle",
       "type": 5,
       "assignees": [
@@ -291,7 +291,7 @@
       "name": "Task 6",
       "description": "Description for Task 6",
       "deadline": "2023-07-19T00:00:00Z",
-      "completed": false,
+      "is_completed": false,
       "priority": "High",
       "type": 1,
       "assignees": [
@@ -311,7 +311,7 @@
       "name": "Task 7",
       "description": "Description for Task 7",
       "deadline": "2023-07-20T00:00:00Z",
-      "completed": false,
+      "is_completed": false,
       "priority": "Middle",
       "type": 2,
       "assignees": [
