@@ -1,4 +1,11 @@
-<table class="table">
+<style>
+    .table td {
+        user-select: none;
+        cursor: pointer;
+    }
+</style>
+
+<table class="table table-hover">
   <thead>
   <tr>
     <th>ID</th>
@@ -11,13 +18,10 @@
   </thead>
   <tbody class="table-group-divider">
   {% for task in task_list_variable %}
-    <tr>
+    <tr class="clickable"
+        onclick="window.location='{% url 'tasks:task-detail' pk=task.id %}'">
       <td>{{ task.id }}</td>
-      <td>
-        <a href="{% url "tasks:task-detail" pk=task.id %}"
-           class="style-link focus-ring py-1 px-2 rounded-2">{{ task.name }}
-        </a>
-      </td>
+      <td>{{ task.name }}</td>
       <td>
         {% if task.priority == "Urgent" %}
           <span class="badge bg-danger">{{ task.priority }}</span>
@@ -43,4 +47,5 @@
       </td>
     </tr>
   {% endfor %}
+  </tbody>
 </table>
